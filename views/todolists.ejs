@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>to do lists</title>
+    <link href='https://fonts.googleapis.com/css?family=Ubuntu:500' rel='stylesheet' type='text/css'>
+    <link rel='stylesheet' href='/css/style.css' />
+</head>
+<body>
+        <div  class="header">
+            <% include ./partial/menu %>
+                <h2>My To Do Lists</h2>
+                <input type="text" id="todolistname" placeholder="Title...">
+                <ul class="hidden" id="errorlist"></ul>
+                <span  class="addBtn" id="todoaddBtn">Add</span>
+              </div>
+              
+              <ul class="ullist" id="todolists">
+                <%for (let i = 0; i < todos.length; i++) {%>
+                  <li><a href="/users/<%=todos[i]._id%>"><%=todos[i].name%></a><span id="close_<%=todos[i]._id%>" class="close">×</span></li>
+                  
+                  <%}%>
+                
+              </ul>
+              <script src="/dist/main.js"></script>
+</body>
+</html>

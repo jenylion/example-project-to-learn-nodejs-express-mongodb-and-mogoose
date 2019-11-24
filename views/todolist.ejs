@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title><%=todo.name%></title>
+    <link href='https://fonts.googleapis.com/css?family=Ubuntu:500' rel='stylesheet' type='text/css'>
+    <link rel='stylesheet' href='/css/style.css' />
+</head>
+<body>
+        <div  class="header">
+            <% include ./partial/menu %>
+                <h2><%=todo.name%></h2>
+                <div><span>created at: <%=(new Date(todo.createdDate)).toISOString().replace('T', '   ').replace('Z', '   ')%>  </span><br><span>last update: <span id="updatedDate"><%=(new Date(todo.updatedDate)).toISOString().replace('T', '   ').replace('Z', '   ')%></span></span></div>
+                <input type="text" id="todolistname" placeholder="Title...">
+                <input type="hidden" id="todoId" value="<%=todo._id%>">
+                <ul class="hidden" id="errorlist"></ul>
+                <span  class="addBtn" id="todolistaddBtn">Add</span>
+              </div>
+              
+              <ul class="ullist" id="todolist">
+                <%for (let i = 0; i < todo.todoList.length; i++) {%>
+                  <li><%=todo.todoList[i].tag%><span id="close_<%=todo.todoList[i]._id%>" class="close">×</span></li>
+                  
+                  <%}%>
+                
+              </ul>
+              <script src="/dist/main.js"></script>
+</body>
+</html>
